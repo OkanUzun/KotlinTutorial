@@ -48,9 +48,71 @@ fun main(args: Array<String>) {
     println("Message :  ${person2.message}")
 
 
+    println()
+
+    //INHERITANCE
+    val a = BCD()
+    a.think()
+
+    println()
+
+    //INTERFACE
+    val b = InterfaceImpl()
+    println(b.myVar)
+    println(b.absMethod())
+    b.hello()
+
+    println()
+
+    //ACCESS PROVIDERS
+    val c = B()
+    println(c.getValue())
+
+    println()
+
+    //FUNCTION EXTENSION
+    var a1 = Alien()
+    a1.skills = "JAVA"
+    a1.printMySkills()
+
+    var a2 = Alien()
+    a2.skills = "PHP"
+    a2.printMySkills()
+
+    var a3 = Alien()
+    a3.skills = a1.addMySkills(a2)
+    a3.printMySkills()
+
+    println()
+
+    //COMPANION OBJECT
+    println(Alien.show())
+
+    println()
+
+    //DATA CLASS
+    var book = Book("Kotlin", "Tutorialspoint", 5)
+    println(book)
+
+    println()
+
+    //SEALED CLASS
+    var sealedClass : MySealedClass = MySealedClass.O1()
+
+    val output = when(sealedClass){
+        is MySealedClass.O1 -> "Option 1 has been chosed"
+        is MySealedClass.O2 -> "Option 2 has been chosed"
+    }
+    println(output)
 
 }
 
 fun multipleByTwo(x: Int): Int {
     return x * 2
+}
+
+//FUNCTION EXTENSION
+fun Alien.addMySkills(a:Alien):String{
+    this.skills = this.skills + " " + a.skills
+    return this.skills
 }
